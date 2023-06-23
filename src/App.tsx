@@ -22,6 +22,7 @@ interface DiceData {
 	material: string;
 	category: string;
 	isFeatured: boolean;
+  quantity: number;
 }
 
 interface AllProps {
@@ -31,6 +32,8 @@ interface AllProps {
 	setProduct: (item: DiceData) => void;
 	cart: DiceData[];
 	setCart: (items: DiceData[]) => void;
+  totalCartItems: number;
+  setTotalCartItems: (num:number) => void
 }
 
 
@@ -47,12 +50,18 @@ function App():JSX.Element {
     material: '',
     category: '',
     isFeatured: false,
+    quantity: 0
   })
   const [cart, setCart] = useState<DiceData[]>([])
+  const [totalCartItems, setTotalCartItems] = useState<number>(0)
 
  return (
 		<>
-			<Nav />
+			<Nav
+				cart={cart}
+				totalCartItems={totalCartItems}
+				setTotalCartItems={setTotalCartItems}
+			/>
 			<Routes>
 				<Route
 					path="/"
@@ -63,6 +72,8 @@ function App():JSX.Element {
 							setProduct={setProduct}
 							cart={cart}
 							setCart={setCart}
+							totalCartItems={totalCartItems}
+							setTotalCartItems={setTotalCartItems}
 						/>
 					}
 				/>
@@ -77,6 +88,8 @@ function App():JSX.Element {
 								setProduct={setProduct}
 								cart={cart}
 								setCart={setCart}
+								totalCartItems={totalCartItems}
+								setTotalCartItems={setTotalCartItems}
 							/>
 						}
 					/>
@@ -89,6 +102,8 @@ function App():JSX.Element {
 								setProduct={setProduct}
 								cart={cart}
 								setCart={setCart}
+								totalCartItems={totalCartItems}
+								setTotalCartItems={setTotalCartItems}
 							/>
 						}
 					/>
@@ -102,6 +117,8 @@ function App():JSX.Element {
 							setProduct={setProduct}
 							cart={cart}
 							setCart={setCart}
+							totalCartItems={totalCartItems}
+							setTotalCartItems={setTotalCartItems}
 						/>
 					}
 				/>

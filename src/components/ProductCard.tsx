@@ -13,19 +13,30 @@ interface DiceData {
 	material: string;
 	category: string;
 	isFeatured: boolean;
+	quantity: number;
 }
 
 interface AllProps {
-  item?: DiceData;
+	item?: DiceData;
 	data?: DiceData[];
 	product: DiceData;
 	setProduct: (item: DiceData) => void;
 	cart: DiceData[];
 	setCart: (items: DiceData[]) => void;
+	totalCartItems: number;
+	setTotalCartItems: (num: number) => void;
 }
 
-const ProductCard = ({item, product, setProduct, cart, setCart}:AllProps):JSX.Element => {
-  return (
+const ProductCard = ({
+	item,
+	product,
+	setProduct,
+	cart,
+	setCart,
+	totalCartItems,
+	setTotalCartItems,
+}: AllProps): JSX.Element => {
+	return (
 		<div>
 			<Link to={`/shop/${item?.id}`} onClick={() => setProduct(item!)}>
 				<img src={item?.picture} alt="" className="w-40" />
@@ -35,7 +46,7 @@ const ProductCard = ({item, product, setProduct, cart, setCart}:AllProps):JSX.El
 				<h3>{item?.seller}</h3>
 			</a>
 		</div>
-  );
-}
+	);
+};
 
 export default ProductCard

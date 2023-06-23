@@ -9,7 +9,8 @@ interface DiceData {
 	description: string,
 	material: string,
 	category: string,
-	isFeatured: boolean
+	isFeatured: boolean,
+	quantity: number
 }
 export const data: DiceData[] = [
 	{
@@ -24,6 +25,7 @@ export const data: DiceData[] = [
 		material: "resin",
 		category: "dice set",
 		isFeatured: true,
+		quantity: 0,
 	},
 	{
 		id: 2,
@@ -37,6 +39,7 @@ export const data: DiceData[] = [
         product_link: "https://www.etsy.com/listing/1253244182/vintage-blue-dice-dnd-metal-dice?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=dnd+dice+sets&ref=sr_gallery-1-4&pro=1&edd=1&sts=1&organic_search_click=1",
 		category: "dice set",
 		isFeatured: true,
+		quantity: 0,
 	},
 	{
 		id: 3,
@@ -50,6 +53,7 @@ export const data: DiceData[] = [
         product_link: "https://www.etsy.com/listing/1425915191/dice-set-lotr-sauron-dice-lord-of-the?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=dnd+dice+sets&ref=sc_gallery-1-3&pro=1&edd=1&sts=1&plkey=9d26bd7cefb3963fa5528bb73c85c51e95a88fb6%3A1425915191",
 		category: "d20",
 		isFeatured: false,
+		quantity: 0,
 	},
 	{
 		id: 4,
@@ -63,6 +67,7 @@ export const data: DiceData[] = [
         product_link: "https://www.etsy.com/listing/1137515313/mushroom-dice-set-for-dnd-role-playing?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=dnd+dice+sets&ref=sr_gallery-1-7&bes=1&edd=1&sts=1&organic_search_click=1",
 		category: "dice set",
 		isFeatured: false,
+		quantity: 0,
 	},
 	{
 		id: 5,
@@ -75,6 +80,7 @@ export const data: DiceData[] = [
         seller: "Riftgate",
         product_link: "https://www.etsy.com/listing/1137515313/mushroom-dice-set-for-dnd-role-playing?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=dnd+dice+sets&ref=sr_gallery-1-7&bes=1&edd=1&sts=1&organic_search_click=1",
 		category: "dice set",
-		isFeatured: false
+		isFeatured: false,
+		quantity: 0,
 	}
 ]

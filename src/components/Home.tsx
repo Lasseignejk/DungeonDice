@@ -1,3 +1,5 @@
+import ProductCard from "./ProductCard";
+
 interface DiceData {
 	id: number;
 	name: string;
@@ -10,6 +12,7 @@ interface DiceData {
 	material: string;
 	category: string;
 	isFeatured: boolean;
+	quantity: number;
 }
 
 interface AllProps {
@@ -19,16 +22,39 @@ interface AllProps {
 	setProduct: (item: DiceData) => void;
 	cart: DiceData[];
 	setCart: (items: DiceData[]) => void;
+	totalCartItems: number;
+	setTotalCartItems: (num: number) => void;
 }
 
-const Home = ({data, product, setProduct, cart, setCart}:AllProps):JSX.Element => {
-  console.log(product)
-  return (
-    <div>
-      <p>Home</p>
-      <p>Welcome</p>
-    </div>
-  )
-}
+const Home = ({
+	data,
+	product,
+	setProduct,
+	cart,
+	setCart,
+	totalCartItems,
+	setTotalCartItems,
+}: AllProps): JSX.Element => {
+	const featuredDice = data?.filter((dice) => dice.isFeatured);
+	return (
+		<div>
+			<p>Welcome</p>
+			{featuredDice?.map((item: DiceData) => (
+				<div>
+					<ProductCard
+						item={item}
+						key={item.id}
+						product={product}
+						setProduct={setProduct}
+						cart={cart}
+						setCart={setCart}
+						totalCartItems={totalCartItems}
+						setTotalCartItems={setTotalCartItems}
+					/>
+				</div>
+			))}
+		</div>
+	);
+};
 
 export default Home

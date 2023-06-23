@@ -1,4 +1,6 @@
 import React from 'react'
+import ProductCard from './ProductCard';
+import ProductCardCart from './ProductCardCart';
 
 interface DiceData {
 	id: number;
@@ -12,6 +14,7 @@ interface DiceData {
 	material: string;
 	category: string;
 	isFeatured: boolean;
+  quantity: number;
 }
 
 interface AllProps {
@@ -21,13 +24,42 @@ interface AllProps {
 	setProduct: (item: DiceData) => void;
 	cart: DiceData[];
 	setCart: (items: DiceData[]) => void;
+	totalCartItems: number;
+	setTotalCartItems: (num: number) => void;
 }
 
-const Cart = ({data, product, setProduct, cart, setCart}:AllProps):JSX.Element => {
-  console.log(product)
-  return (
-    <div>Cart</div>
-  )
-}
+const Cart = ({
+	data,
+	product,
+	setProduct,
+	cart,
+	setCart,
+	totalCartItems,
+	setTotalCartItems,
+}: AllProps): JSX.Element => {
+
+	return (
+		<div>
+			<h1>Cart</h1>
+      {cart.length != 0 ? (
+        cart?.map((item: DiceData) => (
+          <ProductCardCart
+            item={item}
+            key={item.id}
+            product={product}
+            setProduct={setProduct}
+            cart={cart}
+            setCart={setCart}
+            totalCartItems={totalCartItems}
+            setTotalCartItems={setTotalCartItems}
+          />
+			  ))
+      ) : (
+        <h1>Your cart is empty</h1>
+      )}
+			
+		</div>
+	);
+};
 
 export default Cart
