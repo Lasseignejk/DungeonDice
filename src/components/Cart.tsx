@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard';
 import ProductCardCart from './ProductCardCart';
 
@@ -26,6 +26,7 @@ interface AllProps {
 	setCart: (items: DiceData[]) => void;
 	totalCartItems: number;
 	setTotalCartItems: (num: number) => void;
+	cartTotal: () => void
 }
 
 const Cart = ({
@@ -37,26 +38,47 @@ const Cart = ({
 	totalCartItems,
 	setTotalCartItems,
 }: AllProps): JSX.Element => {
+		const [total, setTotal] = useState<string>("");
+
+		
+	useEffect(() => {
+		cartTotal();
+	});
+
+		const cartTotal = (): void => {
+			let price: number = 0;
+			cart.map((item) => {
+				price += item.price * item.quantity;
+			});
+			setTotal(price.toFixed(2));
+		};
 
 	return (
 		<div>
 			<h1>Cart</h1>
-      {cart.length != 0 ? (
-        cart?.map((item: DiceData) => (
-          <ProductCardCart
-            item={item}
-            key={item.id}
-            product={product}
-            setProduct={setProduct}
-            cart={cart}
-            setCart={setCart}
-            totalCartItems={totalCartItems}
-            setTotalCartItems={setTotalCartItems}
-          />
-			  ))
-      ) : (
-        <h1>Your cart is empty</h1>
-      )}
+			
+			{cart.length != 0 ? (
+				<>
+				{cart?.map((item: DiceData) => (
+					<ProductCardCart
+						item={item}
+						key={item.id}
+						product={product}
+						setProduct={setProduct}
+						cart={cart}
+						setCart={setCart}
+						totalCartItems={totalCartItems}
+						setTotalCartItems={setTotalCartItems}
+						total={total}
+						setTotal={setTotal}
+						cartTotal={cartTotal}
+					/>
+				))}
+				<p>Your total is ${total}</p>
+				</>
+			) : (
+				<h1>Your cart is empty</h1>
+			)}
 			
 		</div>
 	);

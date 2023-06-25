@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 interface DiceData {
 	id: number;
 	name: string;
@@ -23,6 +23,9 @@ interface AllProps {
 	setCart: (items: DiceData[]) => void;
 	totalCartItems: number;
 	setTotalCartItems: (num: number) => void;
+	total: string;
+	setTotal: (str: string) => void;
+	cartTotal: () => void
 }
 
 const ProductCardCart = ({
@@ -33,8 +36,13 @@ const ProductCardCart = ({
 	setCart,
 	totalCartItems,
 	setTotalCartItems,
+	total,
+	setTotal,
+	cartTotal
 }:AllProps):JSX.Element => {
     const [quantity, setQuantity] = useState(item?.quantity)
+
+
 
     const addToCart = (product: DiceData): void => {
 		const alreadyInCart = cart.find((item) => item.id === product.id);
@@ -58,21 +66,20 @@ const ProductCardCart = ({
     const removeFromCart = (product: DiceData): void => {
         const updatedCart = cart.map((item) => {
 			if (item.id === product.id) {
-				return { ...item, quantity: item.quantity - 1 };
+				const updatedQuantity = item.quantity - 1
+				if (updatedQuantity <= 0) {
+					return null
+				}
+				return { ...item, quantity: updatedQuantity };
 			}
 			return item;
 		});
-
-            setCart(updatedCart);
-            console.log(cart)
-
-            const filteredCart = cart.filter((dice) => dice.quantity!=0)
-
-            console.log(filteredCart)
-			
-			
-			setTotalCartItems(totalCartItems - 1);
+		const filteredCart = updatedCart.filter((item) => item !== null);
+		setCart(filteredCart);
+		setTotalCartItems(totalCartItems - 1)
 		}
+	
+
 	
 
 	return (
@@ -87,15 +94,17 @@ const ProductCardCart = ({
                 <button className='w-12 border-black border-2' onClick={() => {
                     setQuantity(quantity! + 1); 
                     addToCart(item!)
-
+					cartTotal()
                     }}>+
                 </button>
                 <button className='w-12 border-black border-2' onClick={() => {
                     setQuantity(quantity! - 1); 
                     removeFromCart(item!)
+					cartTotal()
                     }}>-
                 </button>
             </div>
+
 		</div>
 	);
 };
