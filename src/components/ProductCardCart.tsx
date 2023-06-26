@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 interface DiceData {
 	id: number;
 	name: string;
@@ -28,18 +28,24 @@ interface AllProps {
 	cartTotal: () => void
 }
 
+interface CartProps extends AllProps {
+	cartTotal: () => void;
+	total: string;
+	setTotal: (str:string) => void;
+}
+
 const ProductCardCart = ({
 	item,
-	product,
-	setProduct,
+	// product,
+	// setProduct,
 	cart,
 	setCart,
 	totalCartItems,
 	setTotalCartItems,
-	total,
-	setTotal,
+	// total,
+	// setTotal,
 	cartTotal
-}:AllProps):JSX.Element => {
+}:CartProps):JSX.Element => {
     const [quantity, setQuantity] = useState(item?.quantity)
 
 
@@ -74,7 +80,7 @@ const ProductCardCart = ({
 			}
 			return item;
 		});
-		const filteredCart = updatedCart.filter((item) => item !== null);
+		const filteredCart:DiceData[] = updatedCart.filter((item):item is DiceData => item !== null);
 		setCart(filteredCart);
 		setTotalCartItems(totalCartItems - 1)
 		}

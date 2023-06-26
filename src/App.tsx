@@ -9,6 +9,7 @@ import ProductPage from './components/ProductPage';
 import Shop from './components/Shop';
 import {data} from "./data/data"
 import {Route, Routes} from "react-router-dom"
+import Contact from './components/Contact';
 
 interface DiceData {
 	id: number;
@@ -54,6 +55,16 @@ function App():JSX.Element {
   })
   const [cart, setCart] = useState<DiceData[]>([])
   const [totalCartItems, setTotalCartItems] = useState<number>(0)
+		const [total, setTotal] = useState<string>("");
+
+
+				const cartTotal = (): void => {
+					let price: number = 0;
+					cart.map((item) => {
+						price += item.price * item.quantity;
+					});
+					setTotal(price.toFixed(2));
+				};
 
  return (
 		<>
@@ -78,6 +89,7 @@ function App():JSX.Element {
 					}
 				/>
 				<Route path="/about" element={<About />} />
+				<Route path="/contact" element={<Contact />} />
 				<Route path="/shop">
 					<Route
 						index
@@ -119,6 +131,9 @@ function App():JSX.Element {
 							setCart={setCart}
 							totalCartItems={totalCartItems}
 							setTotalCartItems={setTotalCartItems}
+							total={total}
+							setTotal={setTotal}
+							cartTotal={cartTotal}
 						/>
 					}
 				/>

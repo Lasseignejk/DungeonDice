@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import ProductCard from './ProductCard';
+import { useEffect, useState } from 'react'
+// import ProductCard from './ProductCard';
 import ProductCardCart from './ProductCardCart';
 
 interface DiceData {
@@ -26,32 +26,34 @@ interface AllProps {
 	setCart: (items: DiceData[]) => void;
 	totalCartItems: number;
 	setTotalCartItems: (num: number) => void;
-	cartTotal: () => void
+
+}
+
+interface CartProps extends AllProps {
+	cartTotal: () => void;
+	total: string;
+	setTotal: (str:string) => void
 }
 
 const Cart = ({
-	data,
+	// data,
 	product,
 	setProduct,
 	cart,
 	setCart,
 	totalCartItems,
 	setTotalCartItems,
-}: AllProps): JSX.Element => {
-		const [total, setTotal] = useState<string>("");
+	cartTotal,
+	total,
+	setTotal
+}: CartProps): JSX.Element => {
 
 		
 	useEffect(() => {
 		cartTotal();
 	});
 
-		const cartTotal = (): void => {
-			let price: number = 0;
-			cart.map((item) => {
-				price += item.price * item.quantity;
-			});
-			setTotal(price.toFixed(2));
-		};
+
 
 	return (
 		<div>

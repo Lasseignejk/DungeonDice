@@ -24,13 +24,17 @@ interface CartProps {
 
 const Nav = ({cart, totalCartItems, setTotalCartItems}:CartProps):JSX.Element => {
   return (
-		<nav className="flex">
-			<ul className="flex gap-5">
-				<li>
-					<Link to="/">Home</Link>
-				</li>
+		<nav className="fixed bottom-0 flex justify-between px-5">
+			<h1 className="text-3xl">Dungeon Dice</h1>
+			<ul className="flex gap-5 text-xl">
 				<li>
 					<Link to="/about">About</Link>
+				</li>
+				<li>
+					<Link to="/contact">Contact</Link>
+				</li>
+				<li>
+					<Link to="/">Home</Link>
 				</li>
 				<li>
 					<Link to="/shop">Shop Dice</Link>
@@ -38,9 +42,7 @@ const Nav = ({cart, totalCartItems, setTotalCartItems}:CartProps):JSX.Element =>
 				<li>
 					<Link to="/cart">Cart</Link>
 				</li>
-				<li>
-					{totalCartItems}
-				</li>
+				<li>{totalCartItems}</li>
 			</ul>
 		</nav>
   );
