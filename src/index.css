@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	font-family: "Caudex", serif;
+}
+
 .nav-item {
 	width: 100px;
 	height: 60px;

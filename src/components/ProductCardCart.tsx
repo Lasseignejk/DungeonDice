@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FaPlus, FaMinus } from "react-icons/fa";
+import CartAddMinusBtns from "./CartAddMinusBtns";
 interface DiceData {
 	id: number;
 	name: string;
@@ -66,6 +68,11 @@ const ProductCardCart = ({
 			setTotalCartItems(totalCartItems + 1);
 		}
 	};
+	const handleAddToCart = () => {
+		setQuantity(quantity! + 1);
+		addToCart(item!);
+		cartTotal();
+	};
 
 	const removeFromCart = (product: DiceData): void => {
 		const updatedCart = cart.map((item) => {
@@ -85,41 +92,43 @@ const ProductCardCart = ({
 		setTotalCartItems(totalCartItems - 1);
 	};
 
+	const handleRemoveFromCart = () => {
+		setQuantity(quantity! - 1);
+		removeFromCart(item!);
+		cartTotal();
+	};
+
 	return (
 		<div>
-			<div className="w-56 h-56 flex items-center justify-center">
-				<img
-					src={item?.picture}
-					alt=""
-					className="w-full h-full object-cover rounded-lg"
-				/>
-			</div>
-			<div className="flex flex-col gap-2">
-				<h2>{item?.name}</h2>
-				<a href={item?.product_link}>
-					<h3>{item?.seller}</h3>
-				</a>
-				<p>{quantity}</p>
-			</div>
-			<div>
-				<button
-					className="w-12 border-black border-2"
-					onClick={() => {
-						setQuantity(quantity! + 1);
-						addToCart(item!);
-						cartTotal();
-					}}>
-					+
-				</button>
-				<button
-					className="w-12 border-black border-2"
-					onClick={() => {
-						setQuantity(quantity! - 1);
-						removeFromCart(item!);
-						cartTotal();
-					}}>
-					-
-				</button>
+			<h1 className="font-bold text-xl mb-3">{item?.seller}</h1>
+			<div className="flex gap-3">
+				<div className="w-20 h-20 flex items-center justify-center">
+					<img
+						src={item?.picture}
+						alt=""
+						className="w-full h-full object-cover rounded-lg"
+					/>
+				</div>
+				<div className="flex flex-col gap-2">
+					<div className="flex flex-col gap-2">
+						<a href={item?.product_link}>
+							<h2>{item?.name}</h2>
+						</a>
+						<p>
+							<strong>Quantity:</strong> {quantity}
+						</p>
+					</div>
+					<div className="flex gap-3">
+						<CartAddMinusBtns
+							type={<FaPlus />}
+							handleFunction={handleAddToCart}
+						/>
+						<CartAddMinusBtns
+							type={<FaMinus />}
+							handleFunction={handleRemoveFromCart}
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

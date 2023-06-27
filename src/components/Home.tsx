@@ -1,3 +1,4 @@
+import { FaDungeon } from "react-icons/fa";
 import ProductCard from "./ProductCard";
 
 interface DiceData {
@@ -41,24 +42,31 @@ const Home = ({
 }: AllProps): JSX.Element => {
 	const featuredDice = data?.filter((dice) => dice.isFeatured);
 	return (
-		<div>
-			<p>Welcome</p>
-			{featuredDice?.map((item: DiceData) => (
-				<div>
-					<ProductCard
-						item={item}
-						key={item.id}
-						product={product}
-						setProduct={setProduct}
-						cart={cart}
-						setCart={setCart}
-						totalCartItems={totalCartItems}
-						setTotalCartItems={setTotalCartItems}
-						openModal={openModal}
-						setOpenModal={setOpenModal}
-					/>
-				</div>
-			))}
+		<div className="mb-20">
+			<h1 className="flex gap-3 text-3xl p-3 justify-center font-header">
+				<FaDungeon />
+				Dungeon Dice <FaDungeon />
+			</h1>
+			<h2 className="text-2xl text-center mb-2">Featured Products</h2>
+
+			<div className="flex flex-col gap-3 justify-center items-center">
+				{featuredDice?.map((item: DiceData) => (
+					<div>
+						<ProductCard
+							item={item}
+							key={item.id}
+							product={product}
+							setProduct={setProduct}
+							cart={cart}
+							setCart={setCart}
+							totalCartItems={totalCartItems}
+							setTotalCartItems={setTotalCartItems}
+							openModal={openModal}
+							setOpenModal={setOpenModal}
+						/>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

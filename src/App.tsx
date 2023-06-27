@@ -10,6 +10,7 @@ import Shop from "./components/Shop";
 import { data } from "./data/data";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./components/Contact";
+import Checkout from "./components/Checkout";
 
 interface DiceData {
 	id: number;
@@ -93,6 +94,7 @@ function App(): JSX.Element {
 				/>
 				<Route path="/about" element={<About />} />
 				<Route path="/contact" element={<Contact />} />
+				<Route path="/checkout" element={<Checkout />} />
 				<Route path="/shop">
 					<Route
 						index
@@ -139,6 +141,8 @@ function App(): JSX.Element {
 							total={total}
 							setTotal={setTotal}
 							cartTotal={cartTotal}
+							openModal={openModal}
+							setOpenModal={setOpenModal}
 						/>
 					}
 				/>

@@ -302,4 +302,55 @@ export const data: DiceData[] = [
 		isFeatured: true,
 		quantity: 0,
 	},
+	{
+		id: 18,
+		name: "Scroll of Rolling -- Dice rolling tray",
+		price: 19.0,
+		sale_price: 9.5,
+		picture:
+			"https://i.etsystatic.com/22747213/r/il/275cbd/2506056181/il_794xN.2506056181_jusg.jpg",
+		seller: "Valentineforyou",
+		product_link:
+			"https://www.etsy.com/listing/838188298/scroll-of-rolling-dice-rolling-tray-or?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=dnd+dice+accessories&ref=sc_gallery-1-3&pro=1&edd=1&sts=1&plkey=9d8774aea307b746fdfcb4409e1f695a9b317f87%3A838188298",
+		description:
+			"Bslspâd ubst babas spâsnosl, susnabu bstrud spabsthud momoz dabsâd. Bsnoko, stslosno zastusp babazumâs okêlstö odxozu rukugo. Basluslorumör zedabast zelukozo kozu trtrokê bsnokolumu, baslos babesth rotozus ozabsnol rudab, åxadaz? Raspâdxn okêstrumu bslok bsnod bazabspu ostes elomo ukspâ asnab sngesmud ksloslsp spêsp. Tosno zbubspâsnaba spâsäsp stoz udör åxuz basnguzeste zenabsp kspêspab.",
+		material: "leather",
+		category: "accessory",
+		isFeatured: false,
+		quantity: 0,
+	},
+	{
+		id: 19,
+		name: "Druidie Tree Tower",
+		price: 59.0,
+		sale_price: 53.1,
+		picture:
+			"https://i.etsystatic.com/32021980/r/il/bb4d87/4753613652/il_794xN.4753613652_hryg.jpg",
+		seller: "SlantedDesigns",
+		product_link:
+			"https://www.etsy.com/listing/1432121082/druidie-tree-tower-dungens-and-dragons?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=dnd+dice+accessories&ref=sc_gallery-1-5&pro=1&frs=1&edd=1&plkey=093dcb348a0384c3ccfb03ac334a21b047ea25db%3A1432121082",
+		description:
+			"Tkak kilot' trnobyal oyeneya chisetem bslukatodaz orstise. Ralyenu, vyya ilarelil shapya ebolidatobneo ezyas vshena prosy bymiko khitekhd chim! Kakrene prudovay senaladn odbil? Bykovitvschom nitodra mnupkadviyye memog. Mnyavozhez roda chas'she rodnoyag zoizn kadobyyya shne bukuyy kosyugolist.",
+		material: "plastic",
+		category: "accessory",
+		isFeatured: true,
+		quantity: 0,
+	},
+	{
+		id: 20,
+		name: "Capybara dice tray",
+		price: 19.9,
+		sale_price: null,
+		picture:
+			"https://i.etsystatic.com/22003720/r/il/62ccd3/5030836534/il_794xN.5030836534_2569.jpg",
+		seller: "GameFancy",
+		product_link:
+			"https://www.etsy.com/listing/1510365535/capybara-dice-tray-dnd-dice-tray-nerdy?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=dnd+dice+accessories&ref=sc_gallery-1-10&edd=1&sts=1&plkey=704646766f1d5421a412b58bf03e715c6ea271ae%3A1510365535",
+		description:
+			"Kayay itag hung sang panggy irtumahisi masyo lisil pawakbal, mglagag uluayapagdang. Inatan gbayamas kbayunangpa mangpatasasya dahamga alad? Pakalako ngita antsanako higag dgusaya madirgser. King bong hitakili berap mang makir. Andonil unggo ngko migd lung pregting, biingat!",
+		material: "cloth",
+		category: "accessory",
+		isFeatured: false,
+		quantity: 0,
+	},
 ];

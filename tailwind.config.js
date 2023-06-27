@@ -2,6 +2,10 @@
 module.exports = {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
+		fontFamily: {
+			header: ["MedievalSharp", "cursive"],
+			mainText: ["Caudex", "serif"],
+		},
 		extend: {
 			colors: {
 				backgroundGray: "#2b2b2b",

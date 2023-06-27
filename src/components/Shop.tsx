@@ -68,7 +68,7 @@ const Shop = ({
 	return (
 		<div className="pb-20">
 			{all && (
-				<h1 className="text-3xl text-center pb-3 py-3">All Dice</h1>
+				<h1 className="text-3xl text-center pb-3 py-3">All Products</h1>
 			)}
 			{sets && (
 				<h1 className="text-3xl text-center pb-3 py-3">Dice Sets</h1>
