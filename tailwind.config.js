@@ -4,9 +4,11 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				backgroundGray: "#262626",
+				backgroundGray: "#2b2b2b",
 				textGray: "#dedfe0",
-			}
+				dkGrayBack: "#141414",
+				grayTransparent: "rgba(20,20,20,.3)",
+			},
 		},
 	},
 	plugins: [],

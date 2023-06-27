@@ -24,6 +24,8 @@ interface AllProps {
 	setCart: (items: DiceData[]) => void;
 	totalCartItems: number;
 	setTotalCartItems: (num: number) => void;
+	openModal: boolean;
+	setOpenModal: (bool: boolean) => void;
 }
 
 const Home = ({
@@ -34,6 +36,8 @@ const Home = ({
 	setCart,
 	totalCartItems,
 	setTotalCartItems,
+	openModal,
+	setOpenModal,
 }: AllProps): JSX.Element => {
 	const featuredDice = data?.filter((dice) => dice.isFeatured);
 	return (
@@ -50,6 +54,8 @@ const Home = ({
 						setCart={setCart}
 						totalCartItems={totalCartItems}
 						setTotalCartItems={setTotalCartItems}
+						openModal={openModal}
+						setOpenModal={setOpenModal}
 					/>
 				</div>
 			))}
@@ -57,4 +63,4 @@ const Home = ({
 	);
 };
 
-export default Home
+export default Home;

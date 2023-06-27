@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import ProductModal from "./ProductModal";
+import ProductPrice from "./ProductPrice";
 
 interface DiceData {
 	id: number;
@@ -25,6 +26,8 @@ interface AllProps {
 	setCart: (items: DiceData[]) => void;
 	totalCartItems: number;
 	setTotalCartItems: (num: number) => void;
+	openModal: boolean;
+	setOpenModal: (bool: boolean) => void;
 }
 
 const ProductCard = ({
@@ -35,18 +38,53 @@ const ProductCard = ({
 	setCart,
 	totalCartItems,
 	setTotalCartItems,
+	openModal,
+	setOpenModal,
 }: AllProps): JSX.Element => {
+	const formatName = (str: string): string => {
+		if (str.length > 25) {
+			return str.slice(0, 25) + "...";
+		}
+		return str;
+	};
 	return (
-		<div>
-			<Link to={`/shop/${item?.id}`} onClick={() => setProduct(item!)}>
-				<img src={item?.picture} alt="" className="w-40" />
-				<h2>{item?.name}</h2>
-			</Link>
-			<a href="">
-				<h3>{item?.seller}</h3>
-			</a>
+		<div className="flex flex-col w-56 productCard">
+			{openModal && (
+				<ProductModal
+					item={item}
+					product={product}
+					setProduct={setProduct}
+					cart={cart}
+					setCart={setCart}
+					totalCartItems={totalCartItems}
+					setTotalCartItems={setTotalCartItems}
+					openModal={openModal}
+					setOpenModal={setOpenModal}
+				/>
+			)}
+			<div className="w-56 h-56 flex items-center">
+				<img
+					src={item?.picture}
+					alt=""
+					className="w-full h-full object-cover rounded-lg productImg"
+					onClick={() => {
+						setProduct(item!);
+						setOpenModal(true);
+					}}
+				/>
+			</div>
+			<div className="flex flex-col gap-2">
+				<h2 className="text-md mt-1">
+					{item && formatName(item.name)}
+				</h2>
+				{item && <ProductPrice item={item} />}
+
+				<a href={item?.product_link}>
+					<h3 className="text-xs">{item?.seller}</h3>
+				</a>
+			</div>
 		</div>
 	);
 };
 
-export default ProductCard
+export default ProductCard;

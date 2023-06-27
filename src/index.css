@@ -1,3 +1,42 @@
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-item {
+	width: 100px;
+	height: 60px;
+	/* border: 2px solid #141414; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 10px 10px 35px #0a0a0a;
+}
+
+.shop-nav-button {
+	width: 90px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 10px 10px 35px #0a0a0a;
+	border-radius: 20px;
+}
+
+.shop-nav-button:hover {
+	background-color: #dedfe0;
+	color: #2b2b2b;
+	transition: all 0.2s ease-in;
+}
+
+.shop-nav-button:focus {
+	font-weight: bold;
+	background-color: #dedfe0;
+	color: #2b2b2b;
+}
+
+.productCard:hover .productImg,
+.productCard.hover .productImg {
+	box-shadow: 0px 0px 20px #0a0a0a;
+	transition: all 0.2s ease-in;
+	cursor: pointer;
+}

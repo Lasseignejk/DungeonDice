@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 interface DiceData {
 	id: number;
 	name: string;
@@ -25,13 +25,13 @@ interface AllProps {
 	setTotalCartItems: (num: number) => void;
 	total: string;
 	setTotal: (str: string) => void;
-	cartTotal: () => void
+	cartTotal: () => void;
 }
 
 interface CartProps extends AllProps {
 	cartTotal: () => void;
 	total: string;
-	setTotal: (str:string) => void;
+	setTotal: (str: string) => void;
 }
 
 const ProductCardCart = ({
@@ -44,13 +44,11 @@ const ProductCardCart = ({
 	setTotalCartItems,
 	// total,
 	// setTotal,
-	cartTotal
-}:CartProps):JSX.Element => {
-    const [quantity, setQuantity] = useState(item?.quantity)
+	cartTotal,
+}: CartProps): JSX.Element => {
+	const [quantity, setQuantity] = useState(item?.quantity);
 
-
-
-    const addToCart = (product: DiceData): void => {
+	const addToCart = (product: DiceData): void => {
 		const alreadyInCart = cart.find((item) => item.id === product.id);
 
 		if (alreadyInCart) {
@@ -69,50 +67,62 @@ const ProductCardCart = ({
 		}
 	};
 
-    const removeFromCart = (product: DiceData): void => {
-        const updatedCart = cart.map((item) => {
+	const removeFromCart = (product: DiceData): void => {
+		const updatedCart = cart.map((item) => {
 			if (item.id === product.id) {
-				const updatedQuantity = item.quantity - 1
+				const updatedQuantity = item.quantity - 1;
 				if (updatedQuantity <= 0) {
-					return null
+					return null;
 				}
 				return { ...item, quantity: updatedQuantity };
 			}
 			return item;
 		});
-		const filteredCart:DiceData[] = updatedCart.filter((item):item is DiceData => item !== null);
+		const filteredCart: DiceData[] = updatedCart.filter(
+			(item): item is DiceData => item !== null
+		);
 		setCart(filteredCart);
-		setTotalCartItems(totalCartItems - 1)
-		}
-	
-
-	
+		setTotalCartItems(totalCartItems - 1);
+	};
 
 	return (
 		<div>
-			<img src={item?.picture} alt="" className="w-40" />
-			<h2>{item?.name}</h2>
-			<a href={item?.product_link}>
-				<h3>{item?.seller}</h3>
-			</a>
-            <p>{quantity}</p>
-            <div>
-                <button className='w-12 border-black border-2' onClick={() => {
-                    setQuantity(quantity! + 1); 
-                    addToCart(item!)
-					cartTotal()
-                    }}>+
-                </button>
-                <button className='w-12 border-black border-2' onClick={() => {
-                    setQuantity(quantity! - 1); 
-                    removeFromCart(item!)
-					cartTotal()
-                    }}>-
-                </button>
-            </div>
-
+			<div className="w-56 h-56 flex items-center justify-center">
+				<img
+					src={item?.picture}
+					alt=""
+					className="w-full h-full object-cover rounded-lg"
+				/>
+			</div>
+			<div className="flex flex-col gap-2">
+				<h2>{item?.name}</h2>
+				<a href={item?.product_link}>
+					<h3>{item?.seller}</h3>
+				</a>
+				<p>{quantity}</p>
+			</div>
+			<div>
+				<button
+					className="w-12 border-black border-2"
+					onClick={() => {
+						setQuantity(quantity! + 1);
+						addToCart(item!);
+						cartTotal();
+					}}>
+					+
+				</button>
+				<button
+					className="w-12 border-black border-2"
+					onClick={() => {
+						setQuantity(quantity! - 1);
+						removeFromCart(item!);
+						cartTotal();
+					}}>
+					-
+				</button>
+			</div>
 		</div>
 	);
 };
 
-export default ProductCardCart
+export default ProductCardCart;

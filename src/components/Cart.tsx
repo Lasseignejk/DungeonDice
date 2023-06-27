@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 // import ProductCard from './ProductCard';
-import ProductCardCart from './ProductCardCart';
+import ProductCardCart from "./ProductCardCart";
 
 interface DiceData {
 	id: number;
@@ -14,7 +14,7 @@ interface DiceData {
 	material: string;
 	category: string;
 	isFeatured: boolean;
-  quantity: number;
+	quantity: number;
 }
 
 interface AllProps {
@@ -26,13 +26,12 @@ interface AllProps {
 	setCart: (items: DiceData[]) => void;
 	totalCartItems: number;
 	setTotalCartItems: (num: number) => void;
-
 }
 
 interface CartProps extends AllProps {
 	cartTotal: () => void;
 	total: string;
-	setTotal: (str:string) => void
+	setTotal: (str: string) => void;
 }
 
 const Cart = ({
@@ -45,45 +44,55 @@ const Cart = ({
 	setTotalCartItems,
 	cartTotal,
 	total,
-	setTotal
+	setTotal,
 }: CartProps): JSX.Element => {
-
-		
 	useEffect(() => {
 		cartTotal();
 	});
 
-
+	const checkItems = () => {
+		if (totalCartItems > 1) {
+			return "items";
+		} else {
+			return "item";
+		}
+	};
 
 	return (
-		<div>
-			<h1>Cart</h1>
-			
+		<div className="flex flex-col justify-center pb-20 px-3">
 			{cart.length != 0 ? (
 				<>
-				{cart?.map((item: DiceData) => (
-					<ProductCardCart
-						item={item}
-						key={item.id}
-						product={product}
-						setProduct={setProduct}
-						cart={cart}
-						setCart={setCart}
-						totalCartItems={totalCartItems}
-						setTotalCartItems={setTotalCartItems}
-						total={total}
-						setTotal={setTotal}
-						cartTotal={cartTotal}
-					/>
-				))}
-				<p>Your total is ${total}</p>
+					<h1 className="text-3xl py-3">
+						{totalCartItems} {checkItems()} in your cart
+					</h1>
+					<div className="flex justify-between font-bold">
+						<p>
+							Total ({totalCartItems} {checkItems()})
+						</p>
+						<p>${total}</p>
+					</div>
+					<button>Checkout</button>
+					{cart?.map((item: DiceData) => (
+						<ProductCardCart
+							item={item}
+							key={item.id}
+							product={product}
+							setProduct={setProduct}
+							cart={cart}
+							setCart={setCart}
+							totalCartItems={totalCartItems}
+							setTotalCartItems={setTotalCartItems}
+							total={total}
+							setTotal={setTotal}
+							cartTotal={cartTotal}
+						/>
+					))}
 				</>
 			) : (
 				<h1>Your cart is empty</h1>
 			)}
-			
 		</div>
 	);
 };
 
-export default Cart
+export default Cart;
